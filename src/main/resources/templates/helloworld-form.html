@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <title>Input form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>New form</h1>
+
+<form:form action="processForm" modelAttribute="student">
+    First name <form:input path="firstName"/>
+    Last name  <form:input path="lastName"/>
+
+    <input type="submit" value="Submit">
+
+</form:form>
+
+
+
+<!--    <form action="processForm" method="GET">-->
+<!--        <input type="text" name="studentName" placeholder="Whats name"/>-->
+<!--        <input type="submit" />-->
+<!--    </form>-->
+
+<a href="/"> start</a>
+</body>
+</html>
