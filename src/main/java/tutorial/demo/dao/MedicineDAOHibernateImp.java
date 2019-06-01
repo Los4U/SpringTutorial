@@ -20,6 +20,7 @@ public class MedicineDAOHibernateImp implements MedicineDAO {
     public MedicineDAOHibernateImp(EntityManager theEntityManager) {
         System.out.println("Created medicineDAO impl, entity" + theEntityManager);
         this.entityManager = theEntityManager;
+        System.out.println("MedicineDAOHibernateImp");
     }
 
     @Override
@@ -27,6 +28,7 @@ public class MedicineDAOHibernateImp implements MedicineDAO {
         Session curentSession =  entityManager.unwrap(Session.class);
         Query<Medicine> theQuery = curentSession.createQuery("from Medicine", Medicine.class);
         List<Medicine> medicines = theQuery.getResultList();
+        System.out.println("MedicineDAOHibernateImp");
         return medicines;
     }
 

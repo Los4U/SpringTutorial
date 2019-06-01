@@ -1,6 +1,7 @@
 package tutorial.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tutorial.demo.dao.MedicineDAO;
@@ -14,7 +15,7 @@ public class MedicineServiceImpl implements MedicineService {
     private MedicineDAO medicineDAO;
 
     @Autowired
-    public MedicineServiceImpl(MedicineDAO medicineDAO) {
+    public MedicineServiceImpl(@Qualifier("medicineDAOJPAImpl") MedicineDAO medicineDAO) {
         this.medicineDAO = medicineDAO;
     }
 
