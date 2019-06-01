@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:STUDENT="http://www.w3.org/1999/xhtml">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,27 @@
 <body>
 
 
-the student confirmed:
+<p style="font-weight: bold">STUDENT:</p>
 
+<label>First name:
+    <span th:text=${student.firstName}>t </span>
+</label><br>
+<label>Last name:
+    <span th:text=${student.lastName}>t </span>
+</label><br>
+<label>Country:
+    <span th:text=${student.country}>t </span>
+</label><br>
+<label>Free passes:
+    <span th:text=${student.freePasses}>t </span>
+</label><br>
+<label>Post Code:
+    <span th:text=${student.postCode}>t </span>
+</label><br>
+<label>Course Code:
+    <span th:text=${student.courseCode}>t </span>
+</label><br>
 
-<span th:text=${student.firstName}>t </span>
-<span th:text=${student.lastName}>tetettee </span>
-<span th:text=${student.country}>tetettee </span>
 
 
 </body>

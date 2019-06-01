@@ -35,6 +35,30 @@
         <span class="error-sign" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
     </p>
 
+    <p>Free passes:
+        <label>
+            <input type="text" th:field="*{freePasses}" th:class="${#fields.hasErrors('freePasses')}? errorBorder" />
+        </label>
+        <span class="error-sign" th:if="${#fields.hasErrors('freePasses')}" th:errors="*{freePasses}"></span>
+    </p>
+
+    <p>Post code:
+        <label>
+            <input type="text" th:field="*{postCode}" th:class="${#fields.hasErrors('postCode')}? errorBorder" />
+        </label>
+        <span class="error-sign" th:if="${#fields.hasErrors('postCode')}" th:errors="*{postCode}"></span>
+    </p>
+
+    <p>Course code:
+        <label>
+            <input type="text" th:field="*{courseCode}" th:class="${#fields.hasErrors('courseCode')}? errorBorder" />
+        </label>
+        <span class="error-sign" th:if="${#fields.hasErrors('courseCode')}" th:errors="*{courseCode}"></span>
+    </p>
+
+
+
+
 
     <label> Country:
         <select th:field="*{country}">

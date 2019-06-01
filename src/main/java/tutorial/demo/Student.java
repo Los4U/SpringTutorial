@@ -1,18 +1,35 @@
 package tutorial.demo;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import tutorial.demo.Service.CourseCode;
+
+import javax.validation.constraints.*;
 import java.util.LinkedHashMap;
 
 public class Student {
 
     @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @Size(min = 3, message = "to short")
     private String firstName;
 
     @NotNull(message = "is required")
-    @Size(min = 1, message = "is required")
+    @Size(min = 1, message = "to short")
     private String lastName;
+
+    @NotNull(message = "is required")
+    @Size(min = 5, message = "to short")
+    @Pattern(regexp = "^[0-9]{5}",message = "only 5 digits")
+    private String postCode;
+
+    @NotNull(message = "is required")
+    @Min(value = 0, message = "must be >= 0")
+    @Max(value = 10, message = "must be <= 10")
+    private Integer freePasses;
+
+    @NotNull(message = "is required")
+    @CourseCode(value="LUV", message="must start with LUV")
+    private String courseCode;
+
+
 
     private String country;
 
@@ -58,4 +75,33 @@ public class Student {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public Integer getFreePasses() {
+        return freePasses;
+    }
+
+    public void setFreePasses(Integer freePasses) {
+        this.freePasses = freePasses;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+
 }
+
+
+
