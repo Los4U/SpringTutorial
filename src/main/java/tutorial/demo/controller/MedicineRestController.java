@@ -19,12 +19,12 @@ public class MedicineRestController {
         this.medicineService = medicineService;
     }
 
-    @GetMapping ("/medicines")
+    @GetMapping ("/drugs")
     public List<Medicine> findAll(){
         return medicineService.findAll();
     }
 
-    @GetMapping ("/medicines/{id}")
+    @GetMapping ("/drugs/{id}")
     public Medicine findById(@PathVariable int id){
         Medicine theMedicine = medicineService.findById(id);
         if(theMedicine ==  null){
@@ -33,20 +33,20 @@ public class MedicineRestController {
         return theMedicine;
     }
 
-    @PostMapping("/medicines")
+    @PostMapping("/drugs")
     public Medicine addMedicine(@RequestBody Medicine theMedicine){
         theMedicine.setMedicineId(0);
         medicineService.save(theMedicine);
         return theMedicine;
     }
 
-    @PutMapping("/medicines")
+    @PutMapping("/drugs")
     public Medicine updateMedicine(@RequestBody Medicine theMedicine){
         medicineService.save(theMedicine);
         return theMedicine;
     }
 
-    @DeleteMapping("/medicines/{id}")
+    @DeleteMapping("/drugs/{id}")
     public String deleteMedicineById(@PathVariable int id){
         Medicine theMedicine = medicineService.findById(id);
         if(theMedicine == null){

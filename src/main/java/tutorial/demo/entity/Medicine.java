@@ -1,5 +1,6 @@
 package tutorial.demo.entity;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "medicines", schema = "public")
@@ -10,12 +11,20 @@ public class Medicine {
     @Column(name = "medicine_id")
     private int medicineId;
 
+    @NotNull(message = "is required")
+    @Min(value = 1, message = "must be >= 1")
+    @Max(value = 100, message = "must be <= 100")
+    @Pattern(regexp = "^[0-9]{3}",message = "only 3 digits")
     @Column(name = "medicineCode")
     private int medicineCode;
 
+    @NotNull(message = "is required")
+    @Size(min = 3, message = "to short")
     @Column(name = "medicineName")
     private String medicineName;
 
+    @NotNull(message = "is required")
+    @Size(min = 3, message = "to short")
     @Column(name = "medicineDescription")
     private  String medicineDescription;
 

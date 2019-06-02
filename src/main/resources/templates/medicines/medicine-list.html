@@ -15,6 +15,13 @@
 <div class="container">
     <p th:text="Medicines" style="font-weight: bold">ddMedicines:</p>
 
+
+    <!--    Add a button-->
+    <a th:href="@{/medicines/showFormForAddMedicine}"
+        class="btn btn-primary btn-sm mb-3">
+        Add medicine
+    </a>
+
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
         <tr>
@@ -27,7 +34,7 @@
         <tbody>
             <tr th:each="medicine : ${medicineList}">
                 <td th:text="${medicine.medicineId}" ></td>
-                <td th:text="'C:' + ${medicine.medicineName}" class="funny"></td>
+                <td th:text="${medicine.medicineName}" class="funny"></td>
                 <td th:text="${medicine.medicineCode}" class="funny"></td>
                 <td th:text="${medicine.medicineDescription}" class="funny"></td>
             </tr>

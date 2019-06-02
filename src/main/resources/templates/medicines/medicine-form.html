@@ -1,10 +1,59 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Medicines</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        .error-sign {
+            color:red;
+        }
+        .errorBorder {
+            color:red;
+            border-style: solid;
+            border-color: coral;
+        }
+    </style>
+
 </head>
 <body>
+<div class="container">
+    <p class="h4 mb-4">    Add new medicine</p>
+
+
+    <form action="#" th:action="@{/medicines/addNewMedicine}" th:object="${medicine}" method="POST">
+        <div class="container">
+            <input type="text" th:field="*{medicineName}" th:class="${#fields.hasErrors('medicineName')}? errorBorder : 'form-control mb-4 col-4'" placeholder="Medicine name"/>
+            <span class="error-sign form-control mb-4 col-4" th:if="${#fields.hasErrors('medicineName')}" th:errors="*{medicineName}"></span>
+
+            <input type="text" th:field="*{medicineCode}" th:class="${#fields.hasErrors('medicineCode')}? errorBorder : 'form-control mb-4 col-4'" placeholder="Medicine code" class="form-control mb-4 col-4"/>
+            <span class="error-sign" th:if="${#fields.hasErrors('medicineCode')}" th:errors="*{medicineCode}"></span>
+
+            <input type="text" th:field="*{medicineDescription}" th:class="${#fields.hasErrors('medicineDescription')}? errorBorder : 'form-control mb-4 col-4'" placeholder="Description" class="form-control mb-4 col-4"/>
+            <span class="error-sign" th:if="${#fields.hasErrors('medicineDescription')}" th:errors="*{medicineDescription}"></span>
+
+            <button type="submit" class="btn btn-info col-2">Save</button>
+            <button type="reset" class="btn btn-info col-2">Reset</button>
+        </div>
+
+    </form>
+
+    <a th:href="@{/medicines}">Back to Medicine List</a>
+
+
+
+</div>
+
+
 
 </body>
 </html>
