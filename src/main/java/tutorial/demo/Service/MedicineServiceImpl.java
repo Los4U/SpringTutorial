@@ -1,46 +1,59 @@
 package tutorial.demo.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import tutorial.demo.dao.MedicineDAO;
+import tutorial.demo.dao.MedicineRepository;
 import tutorial.demo.entity.Medicine;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MedicineServiceImpl implements MedicineService {
 
-    private MedicineDAO medicineDAO;
+//    private MedicineDAO medicineDAO;
+//
+//    @Autowired
+//    public MedicineServiceImpl(@Qualifier("medicineDAOJPAImpl") MedicineDAO medicineDAO) {
+//        this.medicineDAO = medicineDAO;
+//    }
+
+    private MedicineRepository medicineRepository;
 
     @Autowired
-    public MedicineServiceImpl(@Qualifier("medicineDAOJPAImpl") MedicineDAO medicineDAO) {
-        this.medicineDAO = medicineDAO;
+    public MedicineServiceImpl(MedicineRepository medicineRepository) {
+        this.medicineRepository = medicineRepository;
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public List<Medicine> findAll() {
-        System.out.println("serviceMedicine");
-        return medicineDAO.findAll();
+        System.out.println("medicineRepository");
+        return medicineRepository.findAll();
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public Medicine findById(int theId) {
-        return medicineDAO.findById(theId);
+        Optional<Medicine> result = medicineRepository.findById(theId);
+        Medicine theMedicine = null;
+        if(result.isPresent()){
+            theMedicine = result.get();
+        }else{
+            throw new RuntimeException("Dod not find medicine id" + theId);
+        }
+        return theMedicine;
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void save(Medicine theMedicine) {
-        medicineDAO.save(theMedicine);
+        medicineRepository.save(theMedicine);
     }
 
     @Override
-    @Transactional
+    //@Transactional
     public void deleteById(int theId) {
-        medicineDAO.deleteById(theId);
+        medicineRepository.deleteById(theId);
     }
 }

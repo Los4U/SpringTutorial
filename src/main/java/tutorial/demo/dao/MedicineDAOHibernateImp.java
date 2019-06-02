@@ -1,6 +1,5 @@
 package tutorial.demo.dao;
 
-
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +17,7 @@ public class MedicineDAOHibernateImp implements MedicineDAO {
 
     @Autowired
     public MedicineDAOHibernateImp(EntityManager theEntityManager) {
-        System.out.println("Created medicineDAO impl, entity" + theEntityManager);
         this.entityManager = theEntityManager;
-        System.out.println("MedicineDAOHibernateImp");
     }
 
     @Override
@@ -28,7 +25,6 @@ public class MedicineDAOHibernateImp implements MedicineDAO {
         Session curentSession =  entityManager.unwrap(Session.class);
         Query<Medicine> theQuery = curentSession.createQuery("from Medicine", Medicine.class);
         List<Medicine> medicines = theQuery.getResultList();
-        System.out.println("MedicineDAOHibernateImp");
         return medicines;
     }
 
@@ -48,12 +44,9 @@ public class MedicineDAOHibernateImp implements MedicineDAO {
     @Override
     public void deleteById(int theId) {
         Session curentSession =  entityManager.unwrap(Session.class);
-        System.out.println("ID to DELETE: " + theId);
         //VERY IMPORTAND WHEN DELETE , DELETE CAN NOT BY TYPED TO MEDICINE!!!!!!!!!!!!!!!!!
-        Query theQuery =
-                curentSession.createQuery("DELETE FROM Medicine AS m WHERE m.medicineId =: id");
+        Query theQuery =  curentSession.createQuery("DELETE FROM Medicine AS m WHERE m.medicineId =: id");
         theQuery.setParameter("id", theId);
         int result = theQuery.executeUpdate();
-        System.out.println("DELETED:" + result);
     }
 }

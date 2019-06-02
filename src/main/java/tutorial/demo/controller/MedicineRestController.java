@@ -35,7 +35,6 @@ public class MedicineRestController {
 
     @PostMapping("/medicines")
     public Medicine addMedicine(@RequestBody Medicine theMedicine){
-
         theMedicine.setMedicineId(0);
         medicineService.save(theMedicine);
         return theMedicine;

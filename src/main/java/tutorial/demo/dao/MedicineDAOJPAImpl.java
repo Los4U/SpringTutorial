@@ -1,7 +1,5 @@
 package tutorial.demo.dao;
 
-
-
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,14 +18,12 @@ public class MedicineDAOJPAImpl implements MedicineDAO {
     @Autowired
     public MedicineDAOJPAImpl(EntityManager theEntityManager) {
         this.entityManager = theEntityManager;
-        System.out.println("MedicineDAOJPAImpl");
     }
 
     @Override
     public List<Medicine> findAll() {
         Query theQuery = entityManager.createQuery("from Medicine");
         List<Medicine> medicines = theQuery.getResultList();
-        System.out.println("MedicineDAOJPAImpl");
         return medicines;
     }
 
@@ -41,7 +37,6 @@ public class MedicineDAOJPAImpl implements MedicineDAO {
     public void save(Medicine theMedicine) {
         Medicine dbMedicine = entityManager.merge(theMedicine);
         theMedicine.setMedicineId(dbMedicine.getMedicineId());
-
     }
 
     @Override
