@@ -1,4 +1,4 @@
-package tutorial.demo;
+package tutorial.demo.entity;
 
 import tutorial.demo.Service.CourseCode;
 
