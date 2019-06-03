@@ -32,6 +32,11 @@
 
     <form action="#" th:action="@{/medicines/addNewMedicine}" th:object="${medicine}" method="POST">
         <div class="container">
+
+<!--            for UPDATE -->
+            <input type="hidden" th:field="*{medicineId}"/>
+
+<!--            <input type="text" th:field="*{medicineName}" th:class="${#fields.hasErrors('medicineName')}? errorBorder : 'form-control mb-4 col-4'" placeholder="Medicine name"/>-->
             <input type="text" th:field="*{medicineName}" th:class="${#fields.hasErrors('medicineName')}? errorBorder : 'form-control mb-4 col-4'" placeholder="Medicine name"/>
             <span class="error-sign form-control mb-4 col-4" th:if="${#fields.hasErrors('medicineName')}" th:errors="*{medicineName}"></span>
 

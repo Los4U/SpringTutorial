@@ -14,7 +14,7 @@ public class Medicine {
     @NotNull(message = "is required")
     @Min(value = 1, message = "must be >= 1")
     @Max(value = 100, message = "must be <= 100")
-    @Pattern(regexp = "^[0-9]{3}",message = "only 3 digits")
+//    @Pattern(regexp = "^[0-9]{3}",message = "only 3 digits")
     @Column(name = "medicineCode")
     private int medicineCode;
 
